@@ -64,11 +64,14 @@ def main():
             y += y_size
 
     # Add Card # 70
-    c70 = card70(path)
-    if c70:
-        c70img = Image.open(c70)
-        c70img = c70img.resize(size_box, Image.FLOYDSTEINBERG)
-        i.paste(c70img, (x_total - x_size, y_total - y_size))
+    try:
+        c70 = card70(path)
+        if c70:
+            c70img = Image.open(c70)
+            c70img = c70img.resize(size_box, Image.FLOYDSTEINBERG)
+            i.paste(c70img, (x_total - x_size, y_total - y_size))
+    except:
+        print "Adding card 70 failed."
 
     i.save(deck_image, format="JPEG", quality=JPEG_QUALITY, optimize=True, progressive=True)
     # i.save("_deck.png", format="PNG", optimize=True, progressive=True)
